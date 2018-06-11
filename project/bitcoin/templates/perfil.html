@@ -1,0 +1,21 @@
+{%load staticfiles%}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bitcoin</title>
+	<link rel="stylesheet" href="{% static "styles/bootstrap.css" %} ">
+</head>
+<body>
+ <h1>Detalhe</h1>
+ <ul>
+ 	<li>{{perfil.name}}</li>
+ 	<li>{{perfil.email}}</li>
+ 	{%if ja_e_contato%}
+ 	<p>ja sao amigos </p>
+ 	{%else%}
+ 	<a href="{%url 'convidar' perfil.id%}">convidar</a>
+ 	{%endif%}
+ </ul>
+</body>
+</html>

@@ -1,0 +1,162 @@
+{%extends "base.html"%}
+{%block body%}
+{%load staticfiles%}
+
+<!-- <div class="col-lg-12">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<strong>TODOS OS PERFIS</strong>
+		</div>
+		<h1>Index</h1>
+		<ul>
+		{%for perfil in perfis%}
+			<li>
+				<a href="{% url 'exibir' perfil.id %}">{{perfil.name}} / {{perfil.email}}</a>
+			</li>
+		{%endfor%}
+		</ul>
+
+	</div>
+    <div class="panel panel-default">
+        {%if perfil_logado.convites_recebidos.count %}
+        <div class="panel-heading">
+            <strong>Vc tem {{perfil_logado.convites_recebidos.count}} convite{{perfil_logado.convites_recebidos |pluralize}} aguardando aprovação</strong>
+        </div>
+        <ul class="list-group">
+            {%for convite in perfil_logado.convites_recebidos.all%}
+            <li class="list-group-item">
+                {{convite.solicitante.name}}
+                <a href="{%url 'aceitar' convite.id%}" class="pull-right">Aceitar</a>
+            </li>
+            {%endfor%}
+        </ul>
+        {%else%}
+        <div class="panel-body">
+            <p>Nenhum convite recebido</p>
+        </div>
+        {%endif%}
+    </div>
+
+
+    <div class="panel panel-default">
+        {%if perfil_logado.contatos.count %}
+        <div class="panel-heading">
+            <strong>Vc tem {{perfil_logado.contatos.count}} contato{{perfil_logado.contatos.count |pluralize}}</strong>
+        </div>
+        <ul class="list-group">
+            {%for contato in perfil_logado.contatos.all%}
+            <li class="list-group-item">
+                <a href="{%url 'exibir' contato.id%}">{{contato.name}}</a>
+            </li>
+            {%endfor%}
+        </ul>
+        {%else%}
+        <div class="panel-body">
+            <p>Sem contato</p>
+        </div>
+        {%endif%}
+    </div>
+
+</div> -->
+	
+
+        
+        <!--
+        	Banner
+        -->
+        <section id="banner" class="demo-multibackground py-85px ov-hidden" 
+				 data-multibackground="debug"
+				 data-multibackground-slideshow-direction="forward"
+				 data-multibackground-layer-0-type="image"
+				 data-multibackground-layer-0-attachment="fixed"
+				 data-multibackground-layer-0-url="{% static "img/img-bg-4.jpg" %}"
+				 data-multibackground-layer-1-type="image"
+				 data-multibackground-layer-1-attachment="fixed"
+				 data-multibackground-layer-1-url="{% static "img/img-bg-5.jpg" %}">
+			<div class="container d-flex align-items-center justify-content-center">
+				<div class="rd-5 text-center d-flex flex-column p-40px" style="background-color: rgba(255,255,255,0.9);">
+					<h1 class="fw-700 fs-4 mb-2 text-second-color">
+						<span class="text-first-color fs-2">Compre agora Bitcoin</span><br>
+						
+					</h1>
+					<p class="fs-1_5 fw-500 mb-30px">
+						Compre Bitcoin de maneira fácil e rápida!
+					</p>
+					<a href="{%url 'registrar'%}" class="d-inline-flex rd-5 btn btn-sm btn-fill-color text-uppercase mx-auto">Comprar</a>
+				</div>
+			</div>
+        </section>
+        
+
+        
+        <!--
+        	Steps
+        -->
+        <section id="steps" class="py-80px text-center demo-multibackground ov-hidden" 
+				 data-multibackground="debug"
+				 data-multibackground-layer-0-type="image"
+				 data-multibackground-layer-0-attachment="parallax"
+				 data-multibackground-layer-0-url="{% static "img/img-bg-3.jpg" %}>
+       		<div class="bg-alpha9-first-color bg-overlay position-absolute"></div>
+        	<div class="container">
+        		<div class="row">
+        			<div class="col-lg-12">
+        				<div class="heading-st-3 text-center mb-40px"><h2 class="text-white">How It Works</h2></div>
+        			</div>
+        			<div class="col-lg-4">
+        				<div class="step-box bg-second-color p-40px text-center rd-5 mb-md-30px mb-sm-30px mb-xs-30px">
+        					<i class="fa fa-user-circle fs-3 text-first-color d-block mb-20px"></i>
+        					<h4 class="text-white fw-500 mb-20px"><span class="fs-2">1. </span>Verify Your ID</h4>
+        					<p class="text-first-color">Sit amet, consectetur adipiscing elit. Quisque lobortis non.</p>
+        				</div>
+        			</div>
+        			<div class="col-lg-4">
+        				<div class="step-box bg-second-color p-40px text-center rd-5 mb-md-30px mb-sm-30px mb-xs-30px">
+        					<i class="fa fa-money fs-3 text-first-color d-block mb-20px"></i>
+        					<h4 class="text-white fw-500 mb-20px"><span class="fs-2">2. </span>Make A Payment</h4>
+        					<p class="text-first-color">Sit amet, consectetur adipiscing elit. Quisque lobortis non.</p>
+        				</div>
+        			</div>
+        			<div class="col-lg-4">
+        				<div class="step-box bg-second-color p-40px text-center rd-5 mb-md-30px mb-sm-30px mb-xs-30px">
+        					<i class="fa fa-unlock fs-3 text-first-color d-block mb-20px"></i>
+        					<h4 class="text-white fw-500 mb-20px"><span class="fs-2">3. </span>Buy or Sell Orders</h4>
+        					<p class="text-first-color">Sit amet, consectetur adipiscing elit. Quisque lobortis non.</p>
+        				</div>
+        			</div>
+				</div>
+			</div>
+		</section>
+        
+
+                
+
+        
+        <!--
+        	Partners
+        -->
+        <section id="partners" class="py-60px bg-gray-400">
+        	<div class="row align-items-center">
+        		<div class="col-lg-9 mx-auto">
+        			<div class="row">
+						<div class="col-lg-3 text-center"><img src="{% static "img/partner-2.png" %}" alt=""></div>
+						<div class="col-lg-3 text-center"><img src="{% static "img/partner-2.png" %}" alt=""></div>
+						<div class="col-lg-3 text-center"><img src="{% static "img/partner-2.png" %}" alt=""></div>
+						<div class="col-lg-3 text-center"><img src="{% static "img/partner-2.png" %}" alt=""></div>
+					</div>
+        		</div>
+        	</div>
+        </section>
+        
+  {%endblock%}      
+
+        
+       
+
+
+    
+        
+
+
+
+

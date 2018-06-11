@@ -1,0 +1,93 @@
+{%extends "base_usuario.html"%}
+{%block body%}
+{%load staticfiles%}
+		<script type="text/javascript">
+
+			function yesnoCheck() {
+			    if (document.getElementById('pagamento1').checked) {
+			        document.getElementById('ifYes').style.display = 'block';
+			    } else {
+			        document.getElementById('ifYes').style.display = 'none';
+			    }
+			}
+
+		</script>
+<section id="page-title" class="py-30px bg-second-color">
+        	<div class="container">
+        		<div class="d-flex page-title justify-content-center justify-content-md-between align-items-center flex-column flex-md-row">
+					<h1 class="d-flex mb-0 fs-2 text-white fw-500">Comprar</h1>
+					<nav class="d-flex mb-0" aria-label="breadcrumb">
+					  <ol class="breadcrumb mb-0">
+						<li class="breadcrumb-item"><a href="{%url 'index'%}">Home</a></li>
+						<li class="breadcrumb-item active" aria-current="page">Comprar</li>
+					  </ol>
+					</nav>
+				</div>
+        	</div>
+        </section>
+<section class="py-80px">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-7 ml-auto mr-auto mb-md-50px mb-sm-50px mb-xs-50px">
+						<form action="{%url 'registrar'%}" method='post' enctype="multipart/form-data" style="box-shadow: 0 1px 3px rgba(0,0,0,0.3); padding: 30px 15px;"> {% csrf_token %}
+							<h3>Informe seus dados</h3>
+							<label style="color: #000; font-weight: bold">Nome</label>
+							<input name="name" type="text" class="form-control mb-30px rd-5 py-10px" placeholder="Nome" required>
+
+							<input name="email" type="text" class="form-control mb-30px rd-5 py-10px" placeholder="Email" required>
+
+							<input name="wallet" type="text" class="form-control mb-30px rd-5 py-10px" placeholder="Carteira Bitcoin" required>
+
+							<div class="col-lg-12" style="text-align: center; display: flex;justify-content: center;flex-wrap: wrap; ">
+
+								<div style="display: block;float: left" class="col-sm-3">
+									<label for="pagamento1" style="cursor: pointer;"><img style="width: 130px; cursor: pointer;" src="{%static "img/mercadopago-300x81.png"%}"></label>
+									<input id ="pagamento1"name="pagamento" type="radio" class="form-control mb-30px rd-5 py-10px" style="width: 25%; display:block; margin:30px auto 10px !important;" value="Bradesco"" required onclick="yesnoCheck()">
+									<div id="ifYes" style="display:none;white-space: nowrap;">
+										<p>NOME</p>
+										<p>CNPJ kkkkkkkkkkkkk</p>
+										<p>Agencia: </p>
+										<p>Conta: </p>
+									</div>
+								</div>
+
+								<div style="display: block;float: left;" class="col-sm-3 ">
+									<label for="pagamento2"><img style="width: 130px; cursor: pointer;" src="{%static "img/mercadopago-300x81.png"%}"></label>
+									<input id="pagamento2"name="pagamento" type="radio" class="form-control mb-30px rd-5 py-10px" style="width: 25%; display:block; margin:30px auto 10px !important" value="Bradesco"" required>
+								</div>
+								<div style="display: block;float: left" class="col-sm-3 ">
+									<label for="pagamento3"><img style="width: 130px; cursor: pointer;" src="{%static "img/mercadopago-300x81.png"%}"></label>
+									<input id="pagamento3"name="pagamento" type="radio" class="form-control mb-30px rd-5 py-10px" style="width: 25%; display:block; margin:30px auto 10px !important" value="Bradesco"" required>
+								</div>
+							<!-- <input name="pagamento" type="radio" class="form-control mb-30px rd-5 py-10px" style="width: 25%; display: inline-block;margin:50px auto 0px !important" value="Caixa" required id="bradesco">
+							<input name="pagamento" type="radio" class="form-control mb-30px rd-5 py-10px" style="width: 25%; display: inline-block;margin:50px auto 0px !important" value="MercadoPago" required> -->
+							</div>
+							<input name="valor" size="35" required maxlength="15" type="text" class="form-control mb-30px rd-5 py-10px mt-20px" placeholder="valor" required>
+							<!-- <input type="file" name="comprovante[]" required title="Anexar comprovante"> -->
+							<!-- <textarea  name ="texto" rows="5" class="form-control mb-30px rd-5 py-10px" placeholder="Your message .."></textarea> -->
+							<label for="comprovante" class="btn rd-5 btn-fill-color btn-md text-uppercase">
+								Comprovante
+								<input class="form-control mb-30px rd-5 py-10px inputfile" id="comprovante" name="comprovante" type="file">
+							</label><br>
+
+							<label class="mt-20px">
+								<input type="checkbox" required title="Você deve aceitar os termos para continuar." name="termos"> "Você deve aceitar os termos para continuar."
+							</label>
+							<br>
+							{%if form.errors%}
+								<div>
+									<button type="button">  &times;</button>
+									{{form.non_field_errors}}
+								</div>
+							{%endif%}
+							<div class="col-lg-12" style="text-align: right">
+							<button type="submit" class="btn rd-5 btn-fill-color btn-md text-uppercase" style="margin-right: 20px;">Submit</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		
+{%endblock%}
