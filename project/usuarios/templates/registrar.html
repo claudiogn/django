@@ -1,16 +1,27 @@
-{%extends "base_usuario.html"%}
+{%extends "base.html"%}
 {%block body%}
 {%load staticfiles%}
 		<script type="text/javascript">
 
 			function yesnoCheck() {
 			    if (document.getElementById('pagamento1').checked) {
-			        document.getElementById('ifYes').style.display = 'block';
-			    } else {
-			        document.getElementById('ifYes').style.display = 'none';
-			    }
+			    	document.getElementById('ifYes2').style.display='none';
+			    	document.getElementById('ifYes3').style.display='none';
+			        document.getElementById('ifYes1').style.display = 'block';
+			    } else if (document.getElementById('pagamento2').checked) {
+			    	document.getElementById('ifYes1').style.display='none';
+			    	document.getElementById('ifYes3').style.display='none';
+			        document.getElementById('ifYes2').style.display = 'block';
+			    } else if (document.getElementById('pagamento3').checked) {
+			    	document.getElementById('ifYes2').style.display='none';
+			    	document.getElementById('ifYes3').style.display='none';
+			        document.getElementById('ifYes3').style.display = 'block';
+			    } 
 			}
-
+			function fileName() {
+				var name = document.getElementById('comprovante').value.split('\\').pop()
+				document.getElementById('filename').innerHTML = name
+			}
 		</script>
 <section id="page-title" class="py-30px bg-second-color">
         	<div class="container">
@@ -31,47 +42,64 @@
 					<div class="col-lg-7 ml-auto mr-auto mb-md-50px mb-sm-50px mb-xs-50px">
 						<form action="{%url 'registrar'%}" method='post' enctype="multipart/form-data" style="box-shadow: 0 1px 3px rgba(0,0,0,0.3); padding: 30px 15px;"> {% csrf_token %}
 							<h3>Informe seus dados</h3>
-							<label style="color: #000; font-weight: bold">Nome</label>
-							<input name="name" type="text" class="form-control mb-30px rd-5 py-10px" placeholder="Nome" required>
-
-							<input name="email" type="text" class="form-control mb-30px rd-5 py-10px" placeholder="Email" required>
-
-							<input name="wallet" type="text" class="form-control mb-30px rd-5 py-10px" placeholder="Carteira Bitcoin" required>
-
+							<label style="color: #484848; font-weight: bold">Nome</label>
+							<input name="name" type="text" class="form-control mb-30px rd-5 py-10px"required>
+							<label style="color: #484848; font-weight: bold">Email</label>
+							<input name="email" type="text" class="form-control mb-30px rd-5 py-10px"  required>
+							<label style="color: #484848; font-weight: bold">Carteira Bitcoin</label>
+							<input name="wallet" type="text" class="form-control mb-30px rd-5 py-10px"  required>
+							<label style="color: #484848; font-weight: bold">Método de Pagamento</label>
 							<div class="col-lg-12" style="text-align: center; display: flex;justify-content: center;flex-wrap: wrap; ">
 
 								<div style="display: block;float: left" class="col-sm-3">
-									<label for="pagamento1" style="cursor: pointer;"><img style="width: 130px; cursor: pointer;" src="{%static "img/mercadopago-300x81.png"%}"></label>
-									<input id ="pagamento1"name="pagamento" type="radio" class="form-control mb-30px rd-5 py-10px" style="width: 25%; display:block; margin:30px auto 10px !important;" value="Bradesco"" required onclick="yesnoCheck()">
-									<div id="ifYes" style="display:none;white-space: nowrap;">
-										<p>NOME</p>
-										<p>CNPJ kkkkkkkkkkkkk</p>
-										<p>Agencia: </p>
-										<p>Conta: </p>
+									<label for="pagamento1" style="cursor: pointer;"><img style="width: 170px; cursor: pointer;" src="{%static "img/caixa-300x68.png"%}"></label>
+									<input id ="pagamento1" name="pagamento" type="radio" class="form-control mb-30px rd-5 py-10px" style="width: 25%; display:block; margin:30px auto 10px !important;" value="Caixa"" required onclick="yesnoCheck()">
+									<div id="ifYes1" style="display:none;white-space: nowrap;">
+										<p style="margin-bottom: 0px;">Nome da empresa:</p>
+										<p style="margin-bottom: 0px;">CNPJ:</p>
+										<p style="margin-bottom: 0px;">Agencia: </p>
+										<p style="margin-bottom: 0px;">Conta: </p>
 									</div>
 								</div>
 
 								<div style="display: block;float: left;" class="col-sm-3 ">
-									<label for="pagamento2"><img style="width: 130px; cursor: pointer;" src="{%static "img/mercadopago-300x81.png"%}"></label>
-									<input id="pagamento2"name="pagamento" type="radio" class="form-control mb-30px rd-5 py-10px" style="width: 25%; display:block; margin:30px auto 10px !important" value="Bradesco"" required>
+									<label for="pagamento2"><img style="width: 170px; cursor: pointer;" src="{%static "img/bradesco-300x80.png"%}"></label>
+									<input id="pagamento2"name="pagamento" type="radio" class="form-control mb-30px rd-5 py-10px" style="width: 25%; display:block; margin:30px auto 10px !important" value="Bradesco"" required onclick="yesnoCheck()">
+									<div id="ifYes2" style="display:none;white-space: nowrap;">
+										<p style="margin-bottom: 0px;">Nome da empresa:</p>
+										<p style="margin-bottom: 0px;">CNPJ:</p>
+										<p style="margin-bottom: 0px;">Agencia: </p>
+										<p style="margin-bottom: 0px;">Conta: </p>
+									</div>
 								</div>
 								<div style="display: block;float: left" class="col-sm-3 ">
-									<label for="pagamento3"><img style="width: 130px; cursor: pointer;" src="{%static "img/mercadopago-300x81.png"%}"></label>
-									<input id="pagamento3"name="pagamento" type="radio" class="form-control mb-30px rd-5 py-10px" style="width: 25%; display:block; margin:30px auto 10px !important" value="Bradesco"" required>
+									<label for="pagamento3"><img style="width: 170px; cursor: pointer;" src="{%static "img/mercadopago-300x81.png"%}"></label>
+									<input id="pagamento3"name="pagamento" type="radio" class="form-control mb-30px rd-5 py-10px" style="width: 25%; display:block; margin:30px auto 10px !important" value="MercadoPago"" required onclick="yesnoCheck()">
+									<div id="ifYes3" style="display:none;white-space: nowrap;">
+										<p style="margin-bottom: 0px;">Nome da empresa:</p>
+										<p style="margin-bottom: 0px;">CNPJ:</p>
+										<p style="margin-bottom: 0px;">Agencia: </p>
+										<p style="margin-bottom: 0px;">Conta: </p>
+									</div>
 								</div>
 							<!-- <input name="pagamento" type="radio" class="form-control mb-30px rd-5 py-10px" style="width: 25%; display: inline-block;margin:50px auto 0px !important" value="Caixa" required id="bradesco">
 							<input name="pagamento" type="radio" class="form-control mb-30px rd-5 py-10px" style="width: 25%; display: inline-block;margin:50px auto 0px !important" value="MercadoPago" required> -->
 							</div>
-							<input name="valor" size="35" required maxlength="15" type="text" class="form-control mb-30px rd-5 py-10px mt-20px" placeholder="valor" required>
+							<label style="color: #484848; font-weight: bold">Valor</label>
+							<input name="valor" size="35" required maxlength="15" type="text" class="form-control mb-30px rd-5 py-10px mt-20px"  required>
 							<!-- <input type="file" name="comprovante[]" required title="Anexar comprovante"> -->
 							<!-- <textarea  name ="texto" rows="5" class="form-control mb-30px rd-5 py-10px" placeholder="Your message .."></textarea> -->
 							<label for="comprovante" class="btn rd-5 btn-fill-color btn-md text-uppercase">
 								Comprovante
-								<input class="form-control mb-30px rd-5 py-10px inputfile" id="comprovante" name="comprovante" type="file">
-							</label><br>
+								<input onchange="fileName()" class="form-control mb-30px rd-5 py-10px inputfile" id="comprovante" name="comprovante" type="file">
 
-							<label class="mt-20px">
-								<input type="checkbox" required title="Você deve aceitar os termos para continuar." name="termos"> "Você deve aceitar os termos para continuar."
+							</label><p style="color: #484848;" id="filename"></p><br>
+
+							<label style="color: #484848; font-weight: bold">Mensagem</label>
+							<textarea name="message" rows="5" class="form-control mb-30px rd-5 py-10px"></textarea>
+
+							<label style="color: #484848; font-weight: bold" class="mt-20px">
+								<input type="checkbox" required title="Você deve aceitar os termos para continuar." name="termos"> Você deve aceitar os <a target="blank" href="{% url 'termos_e_condicoes' %}">termos</a> e <a target="blank" href="{% url 'politica_de_privacidade' %}">políticas</a> para continuar.
 							</label>
 							<br>
 							{%if form.errors%}
@@ -81,7 +109,7 @@
 								</div>
 							{%endif%}
 							<div class="col-lg-12" style="text-align: right">
-							<button type="submit" class="btn rd-5 btn-fill-color btn-md text-uppercase" style="margin-right: 20px;">Submit</button>
+							<button type="submit" class="btn rd-5 btn-fill-color btn-md text-uppercase" style="margin-right: 20px;">Finalizar</button>
 							</div>
 						</form>
 					</div>

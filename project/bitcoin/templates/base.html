@@ -3,12 +3,22 @@
 <html lang="en">
     
     <head>
-        <title>Bcoin | Bitcoin Crypto Currency HTML Template</title>
+        <title>Bitcoin</title>
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="{% static "css/import.min.css" %}">
+                <style>
+        	.inputfile {
+				width: 0.1px;
+				height: 0.1px;
+				opacity: 0;
+				overflow: hidden;
+				position: absolute;
+				z-index: -1;
+			}
+        </style>
     </head>
     
     <body class="animate-in">
@@ -148,69 +158,48 @@
 						<ul class="list-unstyled p-0 m-0">
 							<li class="d-flex flex-row fs-1_2 mb-30px">
 								<i class="fa fa-map-marker mr-20px"></i>
-								Sit amet, consectetur Mauris posuere a ipsum in bibendum.
+								Rua
 							</li>
 							<li class="d-flex flex-row fs-1_2 mb-30px">
 								<i class="fa fa-at mr-20px"></i>
-								info@goldentemp.com
+								Email
 							</li>
 							<li class="d-flex flex-row fs-1_2 mb-30px">
 								<i class="fa fa-mobile fs-1_6 mr-20px"></i>
-								+012 345 6789
+								Telefone
 							</li>
 						</ul>
 					</div>
 					<div class="col-lg-2 mb-md-40px mb-sm-40px mb-xs-40px">
-						<h4 class="text-white mb-40px fw-500">Information</h4>
+						<h4 class="text-white mb-40px fw-500">Informação</h4>
 						<ul class="list-unstyled p-0 m-0">
-							<li><a href="#" class="text-color mb-20px d-block">Home</a></li>
-							<li><a href="#" class="text-color mb-20px d-block">Copyrights</a></li>
-							<li><a href="#" class="text-color mb-20px d-block">About</a></li>
-							<li><a href="#" class="text-color mb-20px d-block">Services</a></li>
-							<li><a href="#" class="text-color mb-20px d-block">Exchange</a></li>
+							<li><a href="{%url 'index'%}" class="text-color mb-20px d-block">Início</a></li>
+							<li><a href="{% url 'termos_e_condicoes'%}" class="text-color mb-20px d-block">Termos e Condições</a></li>
+							<li><a href="{% url 'politica_de_privacidade'%}" class="text-color mb-20px d-block">Política de Privacidade</a></li>
+							<li><a href="{% url 'politica_de_reembolso'%}" class="text-color mb-20px d-block">Política de Reembolso</a></li>
 						</ul>
 					</div>
 					<div class="col-lg-2 mb-md-40px mb-sm-40px mb-xs-40px">
-						<h4 class="text-white mb-40px fw-500">Products</h4>
+						<h4 class="text-white mb-40px fw-500">Bitcoin</h4>
 						<ul class="list-unstyled p-0 m-0">
-							<li><a href="#" class="text-color mb-20px d-block">Bitcoin</a></li>
-							<li><a href="#" class="text-color mb-20px d-block">Ethereum</a></li>
-							<li><a href="#" class="text-color mb-20px d-block">Ripple</a></li>
-							<li><a href="#" class="text-color mb-20px d-block">Services</a></li>
-							<li><a href="#" class="text-color mb-20px d-block">Buy / Sell</a></li>
+							<li><a href="{%url 'registrar'%}" class="text-color mb-20px d-block">Adquirir</a></li>
 						</ul>
 					</div>
 					<div class="col-lg-2 mb-md-40px mb-sm-40px mb-xs-40px">
-						<h4 class="text-white mb-40px fw-500">Contact</h4>
+						<h4 class="text-white mb-40px fw-500">Contato</h4>
 						<ul class="list-unstyled p-0 m-0">
-							<li><a href="#" class="text-color mb-20px d-block">Contact us</a></li>
-							<li><a href="#" class="text-color mb-20px d-block">Our location</a></li>
-							<li><a href="#" class="text-color mb-20px d-block">Main office</a></li>
-							<li><a href="#" class="text-color mb-20px d-block">Our maps</a></li>
+							<li><a href="{%url 'contato'%}" class="text-color mb-20px d-block">Contate-nos</a></li>
 						</ul>
 					</div>
 				</div>
            		<div class="row">
            			<div class="col-lg-12 mt-30px pt-30px brd-thin-solid brd-gray-900 border-right-0 border-left-0 border-bottom-0">
            				<div class="row">
-           					<div class="col-lg-4 mb-md-40px mb-sm-40px mb-xs-40px">
-           						<span class="fs-0_9">All Rights Reserved 2018 @ Goldentemp</span>
+           					<div class="col-lg-4 mb-md-40px mb-sm-40px mb-xs-40px ">
+           						<span class="fs-0_9">Todos os direitos reservados</span>
            					</div>
-           					<div class="col-lg-4 text-lg-center text-md-left text-sm-left text-xs-left mb-md-40px mb-sm-40px mb-xs-40px">
-           						<ul class="list-unstyled list-inline m-0 p-0">
-           							<li class="list-inline-item">
-           								<img src="{% static "img/icon/if_visa.png" %}" alt="">
-           							</li>
-           							<li class="list-inline-item">
-           								<img src="{% static "img/icon/if_paypal.png" %}" alt="">
-           							</li>
-           							<li class="list-inline-item">
-           								<img src="{% static "img/icon/if_mastercard.png" %}" alt="">
-           							</li>
-           							<li class="list-inline-item">
-           								<img src="{% static "img/icon/if_discover.png" %}" alt="">
-           							</li>
-           						</ul>
+           					<div class="col-lg-2 text-lg-center text-md-left text-sm-left text-xs-left mb-md-40px mb-sm-40px mb-xs-40px">
+           					
            					</div>
            					<div class="col-lg-4 text-lg-right text-md-left text-sm-left text-xs-left mb-md-40px mb-sm-40px mb-xs-40px">
            						<ul class="list-unstyled list-inline m-0 p-0">
@@ -237,7 +226,13 @@
 		</p>
         
         <!-- Jquery | Popper | Bootstrap -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js">
+        	$('#comprovante').change(function(){
+		       var name = $('#comprovante').val().split("\\").pop()
+		       	$('#filename').html(name)
+
+   			 });
+        </script>
         <script src="{% static "node_modules/popper.js/dist/umd/popper.min.js" %}"></script>
         <script src="{% static "node_modules/bootstrap/dist/js/bootstrap.min.js" %}"></script>
         <!-- Jquery easing -->

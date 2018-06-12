@@ -10,7 +10,7 @@ class RegistrarUsuarioForm(forms.Form):
 	termos = forms.BooleanField(required=True)
 	valor = forms.CharField(required=True)
 	comprovante = forms.FileField(required=False)
-
+	message = forms.CharField(required=True)
 	
 
 	def is_valid(self):
